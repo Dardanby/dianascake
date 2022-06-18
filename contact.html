@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <link rel="stylesheet" href="changes.css">
+    <title>Document</title>
+</head>
+<body class="bg-blu text-white">
+       <!-- navbar -->
+       <div x-data="{ open: false}">
+        <div class="bg-azzurro flex justify-between items-center m-3 rounded-lg">
+            <a href="index.html"><img class="w-20 h-20 rounded-full ml-3" src="/img/logo.jpg" alt=""></a>
+            <div class="relative mr-3">
+            <button class="bg-verde px-8 py-3 rounded-lg text-xl uppercase" @click="open = !open">Stik</button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" absolute top-5 right-2 bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+              </svg>
+        </div>
+    </div>
+        <div class="bg-azzurro p-5 mx-3 flex justify-center rounded-lg" x-show="open" @click.outside="open=false" x-transition>
+            <input type="number" class="p-2 text-center text-md rounded-lg" id="input" value="38670455762" disabled>
+        </div>
+    </div>
+       <!-- navbar closed -->
+
+       <!-- contact form -->
+
+       <div class="p-4 bg-verde mx-3 space-y-3 rounded-lg">
+        <h1 class="text-3xl text-white">naroči svojo torto zdaj</h1>
+        <p>izberite glede na vaš osebni okus in vse, kar mora imeti vaša posebna torta</p>
+        <div class="flex justify-center">
+           <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+              </svg></a> 
+        </div>
+       </div>
+
+       <section id="contact">
+        <div class="p-4 bg-verde mx-3 space-y-3 rounded-lg mt-4 flex flex-col">
+            <h1 class="text-xl">Ime:</h1>
+            <input class="p-2 outline-none text-black" type="text" placeholder="Mario">
+            <h1 class="text-xl">številka:</h1>
+            <input class="p-2 outline-none text-black" type="number" placeholder="Ex: 35112345678">
+            <h1 class="text-xl">preference in informacije:</h1>
+            <textarea placeholder="Ex. rojstni dan dopolni 22 let, torta mora biti zelena in bela in okusa po možnosti po malinah, okraski po okusu" class="text-black outline-none p-2" name="story"rows="5" cols="33"></textarea>
+            <button class="bg-white p-2 text-xl text-verde">Invia richista</button>
+        </div>
+
+
+        <!-- fine contact -->
+
+        <!-- mappa -->
+        <div id="map" class="mx-3 mt-4">
+            <script>
+                var map = L.map('map').setView([51.505, -0.09], 13);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 maxZoom: 19,
+                 attribution: '© OpenStreetMap'
+                    }).addTo(map);
+                    var marker = L.marker([51.5, -0.09]).addTo(map);
+            </script>
+        </div>
+       </section>
+    <!-- footer -->
+<footer class="bg-verde p-3 text-center text-md rounded-md-t mt-4">
+    <p>Created by Dardan Bytyqi</p>
+    <p>using tailwindCSS & AlpineJS</p>
+    <p>© 2022</p>
+  </footer>
+</body>
+</html>
